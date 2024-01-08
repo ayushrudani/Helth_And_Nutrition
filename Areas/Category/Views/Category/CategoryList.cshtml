@@ -1,0 +1,123 @@
+﻿@{
+	ViewBag.Name = "Category";
+}
+<style>
+	a .Image-Hover {
+		position: absolute;
+		display: none;
+		z-index: 99;
+		transform: scale(0);
+		overflow: hidden;
+	}
+
+	a:hover .Image-Hover {
+		display: block;
+		transform: translate(-30%, -160%) scale(1.5);
+		border-radius: 10px;
+	}
+</style>
+<div class="container-fluid mt--7">
+	<!-- Table -->
+	<div class="row">
+		<div class="col">
+			<!--Alert-->
+			@if (TempData["Message"] != null)
+			{
+				if (TempData["Message"].ToString().Contains("Successfully"))
+				{
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<span class="alert-icon"><i class="ni ni-like-2"></i></span>
+						<span class="alert-text"><strong>Success! </strong>@TempData["Message"]</span>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+				}
+				else
+				{
+					<div class="alert alert-warning alert-dismissible fade show" role="alert">
+						<span class="alert-icon"><i class="ni ni-like-2"></i></span>
+						<span class="alert-text"><strong>Warning! </strong>@TempData["Message"]</span>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+				}
+			}
+			<!--Alert Over-->
+
+			<div class="card shadow mb-5">
+				<div class="card-header border-0">
+					<div class="row align-items-center">
+						<div class="col-8">
+							<h3 class="mb-0">@ViewBag.Name</h3>
+						</div>
+						<div class="col-4 text-right">
+							<a asp-area="Category" asp-controller="Category" asp-action="CategoryAddEdit">
+								<button class="btn btn-icon btn-primary" type="button">
+									<span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
+									<span class="btn-inner--text">Add Record</span>
+								</button>
+							</a>
+						</div>
+					</div>
+				</div>
+				@if (ViewBag.Category == "Null")
+				{
+					<h2 style="margin-left:2.5rem; margin-bottom:1.5rem">No Record Found!</h2>
+				}
+				else
+				{
+					<div class="table-responsive">
+						<table class="table align-items-center table-flush text-center">
+							<thead class="thead-light">
+								<tr>
+									<th scope="col">ID</th>
+									<th scope="col">Name</th>
+									<th scope="col">Code</th>
+									<th scope="col">Image</th>
+									<th scope="col">Created</th>
+									<th scope="col">Modified</th>
+									<th scope="col">Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var data in Model)
+								{
+									<tr>
+										<td>@data.CategoryID</td>
+										<td>@data.CategoryName</td>
+										<td>@data.CategoryCode</td>
+										<td>
+											<a href="#">
+												Hover For View
+												<span class="Image-Hover">
+													<img height="100" width="100" src="~/Images/Category/@data.ImageURL" alt="image" height="150" />
+												</span>
+											</a>
+
+										</td>
+										<td>@data.Created.ToString("dd-MM-yyyy")</td>
+										<td>@data.Modified.ToString("dd-MM-yyyy")</td>
+										<td>
+											<a asp-action="CategoryEdit" asp-route-id=@Convert.ToInt64(data.CategoryID) class="btn btn-icon btn-primary" type="button" title="Edit">
+												<span class="btn-inner--icon"><i class="ni ni-settings-gear-65"></i></span>
+											</a>
+											<a asp-action="CategoryDelete" asp-route-id=@Convert.ToInt64(data.CategoryID) class="btn btn-icon btn-danger" type="button" title="Delete">
+												<span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
+											</a>
+										</td>
+									</tr>
+
+								}
+
+							</tbody>
+						</table>
+					</div>
+				}
+			</div>
+		</div>
+	</div>
+
+
+</div>

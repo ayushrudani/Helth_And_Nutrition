@@ -1,0 +1,198 @@
+﻿@model Helth_And_Nutrition.Areas.SubCategory.Models.SubCategoryModel;
+<style>
+
+	.content {
+		position: relative;
+		width: 90%;
+		max-width: 400px;
+		margin: auto;
+		overflow: hidden;
+	}
+
+		.content .content-overlay {
+			background: rgba(0,0,0,0.7);
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			opacity: 0;
+			-webkit-transition: all 0.4s ease-in-out 0s;
+			-moz-transition: all 0.4s ease-in-out 0s;
+			transition: all 0.4s ease-in-out 0s;
+		}
+
+		.content:hover .content-overlay {
+			opacity: 1;
+		}
+
+	.content-image {
+		width: 100%;
+	}
+
+	.content-details {
+		position: absolute;
+		text-align: center;
+		padding-left: 1em;
+		padding-right: 1em;
+		width: 100%;
+		top: 50%;
+		left: 50%;
+		opacity: 0;
+		-webkit-transform: translate(-50%, -50%);
+		-moz-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+		-webkit-transition: all 0.3s ease-in-out 0s;
+		-moz-transition: all 0.3s ease-in-out 0s;
+		transition: all 0.3s ease-in-out 0s;
+	}
+
+	.content:hover .content-details {
+		top: 50%;
+		left: 50%;
+		opacity: 1;
+		cursor: pointer;
+	}
+
+
+	.content-details p {
+		color: #fff;
+		font-size: 1.8em;
+	}
+
+	.fadeIn-bottom {
+		top: 80%;
+	}
+</style>
+@{
+	ViewBag.Name = "SubCategory";
+
+	string opration = "";
+	if (ViewBag.ID > 0)
+	{
+		opration = "Edit";
+	}
+	else
+	{
+		opration = "Add";
+	}
+}
+<div class="container-fluid mt--7">
+	<div class="row">
+		<div class="card bg-secondary shadow col-12">
+			<div class="card-header bg-white border-0">
+				<div class="row align-items-center">
+					<div class="col-8">
+						<h3 class="mb-0">@ViewBag.Name</h3>
+					</div>
+
+				</div>
+			</div>
+			<div class="card-body">
+				<form asp-area="SubCategory" asp-controller="SubCategory" asp-action="SubCategoryAddEdit" method="post" enctype="multipart/form-data">
+					@Html.HiddenFor(x => x.SubCategoryID)
+					@Html.HiddenFor(y => y.Created)
+					@Html.HiddenFor(z => z.ImageURL)
+					<h6 class="heading-small text-muted mb-4">@opration @ViewBag.Name</h6>
+					<div class="pl-lg-4">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group focused">
+									<label class="form-control-label" for="input-address">SubCategory Name</label>
+									<input asp-for="SubCategoryName" id="input-address" class="form-control form-control-alternative" placeholder="SubCategory Name" type="text">
+									<span asp-validation-for="SubCategoryName" class="text-danger"></span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-4">
+								<div class="form-group focused">
+									<div class="form-group focused">
+										<label class="form-control-label" for="input-SubCategoryCode">SubCategory Code</label>
+										<input asp-for="SubCategoryCode" type="text" id="input-SubCategoryCode" class="form-control form-control-alternative" placeholder="SubCategory Code">
+										<span asp-validation-for="SubCategoryCode" class="text-danger"></span>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4">
+								<div class="form-group focused">
+									<div class="form-group focused">
+										<label class="form-control-label" for="input-SubCategoryCode">Category</label>
+										<select asp-for="CategoryID" asp-items="@(new SelectList(ViewBag.CategoryDropDownList,"CategoryID","CategoryName"))" class="form-control">
+											<option>Default select</option>
+										</select>
+										<span asp-validation-for="SubCategoryCode" class="text-danger"></span>
+									</div>
+								</div>
+							</div>
+							@if (opration == "Edit")
+							{
+								<div class="col-3">
+									<div class="form-group focused">
+										<label for="yourName" class="form-control-label">Image</label>
+										<input asp-for="File" name="File" id="fileInput" style="display:none;" type="file" id="formFile" accept="image/*">
+										<div style=" display:block;">
+											<div class="content">
+												<a id="openFileLink">
+													<div class="content-overlay rounded"></div>
+													<img class="content-image rounded" id="previewImage" src="~/Images/SubCategory/@Model.ImageURL">
+													<div class="content-details fadeIn-bottom">
+														<p class="content-text"><i class="ni ni-album-2"></i></p>
+													</div>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							}
+							else
+							{
+								<div class="col-lg-4">
+									<div class="form-group focused">
+										<label for="yourName" class="form-control-label">Upload Pic</label>
+										<input asp-for="File" name="File" class="form-control" type="file" id="formFile" id="yourImage" accept="image/*">
+										<span asp-validation-for="File" class="text-danger"></span>
+									</div>
+								</div>
+
+							}
+
+						</div>
+					</div>
+					<hr class="my-4">
+					<div class="pl-lg-4">
+						<input type="submit" class="btn btn-primary">
+						<a asp-action="SubCategoryList" class="btn btn-danger" type="button">Cancle</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<script>
+	document.getElementById('openFileLink').addEventListener('click', function () {
+		document.getElementById('fileInput').click();
+	});
+	document.getElementById('fileInput').addEventListener('change', function () {
+		// Get the selected file
+		var fileInput = this;
+		var file = fileInput.files[0];
+
+		// Display the image preview
+		var previewImage = document.getElementById('previewImage');
+
+		if (file && file.type.startsWith('image/')) {
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				previewImage.src = e.target.result;
+			};
+
+			reader.readAsDataURL(file);
+		}
+	});
+</script>

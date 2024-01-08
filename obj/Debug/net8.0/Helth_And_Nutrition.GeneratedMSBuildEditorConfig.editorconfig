@@ -1,0 +1,143 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Helth_And_Nutrition
+build_property.RootNamespace = Helth_And_Nutrition
+build_property.ProjectDir = E:\.Net Projects\Helth_And_Nutrition\Helth_And_Nutrition\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = E:\.Net Projects\Helth_And_Nutrition\Helth_And_Nutrition
+build_property._RazorSourceGeneratorDebug = 
+
+[E:/.Net Projects/Helth_And_Nutrition/Helth_And_Nutrition/Areas/Category/Views/Category/CategoryAddEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2F0ZWdvcnlcVmlld3NcQ2F0ZWdvcnlcQ2F0ZWdvcnlBZGRFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/Helth_And_Nutrition/Helth_And_Nutrition/Areas/Category/Views/Category/CategoryList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2F0ZWdvcnlcVmlld3NcQ2F0ZWdvcnlcQ2F0ZWdvcnlMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/Helth_And_Nutrition/Helth_And_Nutrition/Areas/Category/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2F0ZWdvcnlcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/Helth_And_Nutrition/Helth_And_Nutrition/Areas/Category/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2F0ZWdvcnlcVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/Helth_And_Nutrition/Helth_And_Nutrition/Areas/Dashboard/Views/Dashboard/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXERhc2hib2FyZFxEYXNoYm9hcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/Helth_And_Nutrition/Helth_And_Nutrition/Areas/Dashboard/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXF9WaWV3SW1wb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/Helth_And_Nutrition/Helth_And_Nutrition/Areas/Dashboard/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXF9WaWV3U3RhcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/Helth_And_Nutrition/Helth_And_Nutrition/Areas/Items/Views/Items/ItemsAddEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSXRlbXNcVmlld3NcSXRlbXNcSXRlbXNBZGRFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/Helth_And_Nutrition/Helth_And_Nutrition/Areas/Items/Views/Items/ItemsEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSXRlbXNcVmlld3NcSXRlbXNcSXRlbXNFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/Helth_And_Nutrition/Helth_And_Nutrition/Areas/Items/Views/Items/ItemsList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSXRlbXNcVmlld3NcSXRlbXNcSXRlbXNMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/Helth_And_Nutrition/Helth_And_Nutrition/Areas/Items/Views/Items/VitaminsAndMineralsPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSXRlbXNcVmlld3NcSXRlbXNcVml0YW1pbnNBbmRNaW5lcmFsc1BhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/Helth_And_Nutrition/Helth_And_Nutrition/Areas/Items/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSXRlbXNcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/Helth_And_Nutrition/Helth_And_Nutrition/Areas/Items/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSXRlbXNcVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/Helth_And_Nutrition/Helth_And_Nutrition/Areas/Layout/_AreaLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTGF5b3V0XF9BcmVhTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/Helth_And_Nutrition/Helth_And_Nutrition/Areas/Layout/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTGF5b3V0XF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/Helth_And_Nutrition/Helth_And_Nutrition/Areas/Layout/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTGF5b3V0XF9WaWV3SW1wb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/Helth_And_Nutrition/Helth_And_Nutrition/Areas/SubCategory/Views/SubCategory/SubCategoryAddEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3ViQ2F0ZWdvcnlcVmlld3NcU3ViQ2F0ZWdvcnlcU3ViQ2F0ZWdvcnlBZGRFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/Helth_And_Nutrition/Helth_And_Nutrition/Areas/SubCategory/Views/SubCategory/SubCategoryList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3ViQ2F0ZWdvcnlcVmlld3NcU3ViQ2F0ZWdvcnlcU3ViQ2F0ZWdvcnlMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/Helth_And_Nutrition/Helth_And_Nutrition/Areas/SubCategory/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3ViQ2F0ZWdvcnlcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/Helth_And_Nutrition/Helth_And_Nutrition/Areas/SubCategory/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3ViQ2F0ZWdvcnlcVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/Helth_And_Nutrition/Helth_And_Nutrition/Views/Home/DetailPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEZXRhaWxQYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/Helth_And_Nutrition/Helth_And_Nutrition/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/Helth_And_Nutrition/Helth_And_Nutrition/Views/Home/ItemsPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJdGVtc1BhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/Helth_And_Nutrition/Helth_And_Nutrition/Views/Home/SubCategoryPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTdWJDYXRlZ29yeVBhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/Helth_And_Nutrition/Helth_And_Nutrition/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/Helth_And_Nutrition/Helth_And_Nutrition/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/Helth_And_Nutrition/Helth_And_Nutrition/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/Helth_And_Nutrition/Helth_And_Nutrition/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/Helth_And_Nutrition/Helth_And_Nutrition/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-qg80okh6hf

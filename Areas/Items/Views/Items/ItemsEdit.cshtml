@@ -1,0 +1,225 @@
+﻿@using Helth_And_Nutrition.Areas.Items.Models;
+@model Helth_And_Nutrition.Areas.Items.Models.ItemModel;
+@{
+	ViewBag.Name = "Items";
+
+	
+}
+<style>
+	.header{
+		display:none;
+	}
+
+	.content {
+		position: relative;
+		width: 90%;
+		max-width: 400px;
+		margin: auto;
+		overflow: hidden;
+	}
+
+		.content .content-overlay {
+			background: rgba(0,0,0,0.7);
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			opacity: 0;
+			-webkit-transition: all 0.4s ease-in-out 0s;
+			-moz-transition: all 0.4s ease-in-out 0s;
+			transition: all 0.4s ease-in-out 0s;
+		}
+
+		.content:hover .content-overlay {
+			opacity: 1;
+		}
+
+	.content-image {
+		width: 100%;
+	}
+
+	.content-details {
+		position: absolute;
+		text-align: center;
+		padding-left: 1em;
+		padding-right: 1em;
+		width: 100%;
+		top: 50%;
+		left: 50%;
+		opacity: 0;
+		-webkit-transform: translate(-50%, -50%);
+		-moz-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+		-webkit-transition: all 0.3s ease-in-out 0s;
+		-moz-transition: all 0.3s ease-in-out 0s;
+		transition: all 0.3s ease-in-out 0s;
+	}
+
+	.content:hover .content-details {
+		top: 50%;
+		left: 50%;
+		opacity: 1;
+		cursor: pointer;
+	}
+
+
+	.content-details p {
+		color: #fff;
+		font-size: 1.8em;
+	}
+
+	.fadeIn-bottom {
+		top: 80%;
+	}
+</style>
+<div class="header pb-6 d-flex align-items-center" style="min-height: 500px; background-image: url(../assets-old/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+
+	<span class="mask bg-gradient-default opacity-8"></span>
+
+	<div class="container-fluid d-flex align-items-center">
+		<div class="row">
+			<div class="col-lg-12 col-md-10">
+				<h1 class="display-2 text-white">Hello Jesse</h1>
+				<p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
+				<a asp-action="VitaminsAndMineralsPage" asp-route-itemID="@Convert.ToInt32(Model.ItemID)" asp-route-itemName="@Model.ItemName" asp-route-collectionName="Vitamins" class="btn btn-neutral">Vitamins</a>
+				<a asp-action="VitaminsAndMineralsPage" asp-route-itemID="@Convert.ToInt32(Model.ItemID)" asp-route-itemName="@Model.ItemName" asp-route-collectionName="Minerals" class="btn btn-neutral">Minerals</a>
+				<a asp-action="VitaminsAndMineralsPage" asp-route-itemID="@Convert.ToInt32(Model.ItemID)" asp-route-itemName="@Model.ItemName" asp-route-collectionName="NutritionalInfo" class="btn btn-neutral">Nutritional Info</a>
+				<a asp-action="VitaminsAndMineralsPage" asp-route-itemID="@Convert.ToInt32(Model.ItemID)" asp-route-itemName="@Model.ItemName" asp-route-collectionName="Pros&Cons" class="btn btn-neutral">Pros&Cons</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid mt--6">
+	<div class="row">
+		<div class="col-xl-12 order-xl-1">
+			<div class="card">
+				<div class="card-header">
+					<div class="row align-items-center">
+						<div class="col-8">
+							<h3 class="mb-0">Edit items </h3>
+						</div>
+						
+					</div>
+				</div>
+				<div class="card-body">
+					<form asp-area="Items" asp-controller="Items" asp-action="ItemsAddEdit" method="post" enctype="multipart/form-data">
+						@Html.HiddenFor(x => x.ItemID)
+						@Html.HiddenFor(y => y.Created)
+						<div class="pl-lg-4">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group focused">
+										<label class="form-control-label" for="input-address">Item Name</label>
+										<input asp-for="ItemName" id="input-address" class="form-control form-control-alternative" placeholder="Item Name" type="text">
+										<span asp-validation-for="ItemName" class="text-danger"></span>
+									</div>
+								</div>
+							</div>
+							<div class="row mt-4">
+								<div class="col-lg-6">
+									<div class="form-group focused">
+										<div class="form-group focused">
+											<label class="form-control-label" for="input-ItemsCode">Category</label>
+											<select id="CategoryId" name="CategoryId" asp-for="CategoryID" asp-items="@(new SelectList(ViewBag.CategoryDropDownList,"CategoryID","CategoryName"))" class="form-control">
+												<option>Default select</option>
+											</select>
+											<span asp-validation-for="Category" class="text-danger"></span>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="form-group focused">
+										<div class="form-group focused">
+											<label class="form-control-label" for="input-ItemsCode">SubCategory</label>
+											<select id="SubCategoryId" name="SubCategoryId" asp-for="SubCategoryID" asp-items="@(new SelectList(ViewBag.SubCategoryDropDownList,"SubCategoryID","SubCategoryName"))" class="form-control">
+												<option>Default select</option>
+											</select>
+											<span asp-validation-for="SubCategory" class="text-danger"></span>
+										</div>
+									</div>
+								</div>
+								
+									<div class="col-4">
+										<div class="form-group focused">
+											<label for="yourName" class="form-control-label">Image</label>
+											<input asp-for="File" name="File" id="fileInput" style="display:none;" type="file" id="formFile" accept="image/*">
+											<div style=" display:block;">
+												<div class="content">
+													<a id="openFileLink">
+														<div class="content-overlay rounded"></div>
+														<img class="content-image rounded" id="previewImage" src="~/Images/Items/@Model.ImageURL?v=@Guid.NewGuid()">
+														<div class="content-details fadeIn-bottom">
+															<p class="content-text"><i class="ni ni-album-2"></i></p>
+														</div>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+
+							</div>
+						</div>
+						<hr class="my-4">
+						<div class="pl-lg-4">
+							<input type="submit" class="btn btn-primary">
+							<a asp-action="ItemsList" class="btn btn-danger" type="button">Cancle</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer class="footer pt-0">
+		<div class="row align-items-center justify-content-lg-between">
+			<div class="col-lg-6">
+				<div class="copyright text-center  text-lg-left  text-muted">
+					© 2020 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<ul class="nav nav-footer justify-content-center justify-content-lg-end">
+					<li class="nav-item">
+						<a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
+					</li>
+					<li class="nav-item">
+						<a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
+					</li>
+					<li class="nav-item">
+						<a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+</div>
+
+<script>
+	document.getElementById('openFileLink').addEventListener('click', function () {
+		document.getElementById('fileInput').click();
+	});
+	document.getElementById('fileInput').addEventListener('change', function () {
+		// Get the selected file
+		var fileInput = this;
+		var file = fileInput.files[0];
+
+		// Display the image preview
+		var previewImage = document.getElementById('previewImage');
+
+		if (file && file.type.startsWith('image/')) {
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				previewImage.src = e.target.result;
+			};
+
+			reader.readAsDataURL(file);
+		}
+	});
+</script>

@@ -1,0 +1,287 @@
+﻿@{
+	ViewBag.Name = ViewBag.CollectionName;
+	string Optration = "";
+	@if (ViewBag.Optration == "Edit")
+	{
+		Optration = "Edit";
+	}
+	else
+	{
+		Optration = "Add";
+
+	}
+}
+	<div class="container-fluid d-flex align-items-center mt--6">
+	<div class="row">
+		<div class="col-lg-12 col-md-10">
+			<a class="btn btn-neutral" asp-action="GenerateVitaminsAndMinerals" asp-route-itemID="@ViewBag.ItemID" asp-route-itemName="@ViewBag.ItemName" asp-route-collectionName="@ViewBag.CollectionName">
+				@if (Optration == "Edit")
+				{
+					<span>Generate New</span>
+				}
+				else
+				{
+					<span>Generate</span>
+				}
+			</a>
+		</div>
+	</div>
+</div>
+<div class="mt-6"></div>
+<h1> @ViewBag.ErrorMessage </h1>
+@if (ViewBag.ListIsNull == true)
+{
+	<div class="container-fluid mt-6">
+		<h1>Data Not Found! </h1>
+    </div>
+}
+else
+{
+	<div class="container-fluid mt-6">
+		@if(ViewBag.ErrorMessage != null)
+		{
+			<div class="row">
+				<div class="col-12">
+					<div class="alert alert-danger alert-dismissible fade show" role="alert">
+						<span class="alert-text"><strong>Something went wrong!</strong> please try again</span>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+				</div>
+			</div>
+		}
+		<div class="row">
+			<div class="col-xl-12 order-xl-1">
+				<div class="card">
+					<div class="card-header">
+						<div class="row align-items-center">
+							<div class="col-8">
+								<h3 class="mb-0">@Optration @ViewBag.CollectionName</h3>
+							</div>
+
+						</div>
+					</div>
+					<div class="card-body">
+						<form method="post" asp-action="ProcessForm">
+							<input value="@ViewBag.ItemID" name="ItemId" hidden />
+							<input value="@ViewBag.CollectionName" name="CollectionName" hidden />
+							<div class="pl-lg-4">
+								<div class="row">
+									@if(ViewBag.CollectionName == "Pros&Cons")
+									{
+										<div class="col-6">
+											<div class="row pros">
+												@foreach (var data in @ViewBag.List)
+												{
+													if (data.Name.Contains("Pros"))
+													{
+														<div class="col-12">
+															<div class="form-group">
+																<label class="form-control-label" for="input-address">@data.Name</label>
+																<div class="input-group">
+																	<textarea id="input-address" class="form-control" type="text" name="@data.Name.Replace(" ","")">@data.Value</textarea>
+																</div>
+															</div>
+														</div>
+													}
+												}
+											</div>
+											<div class="row mt-3">
+												<div class="col-4">
+													<button type="button" class="btn btn-success" id="addProsTextarea">Add New Pros</button>
+												</div>
+											</div>
+										</div>
+										<div class="col-6">
+											<div class="row cons">
+												@foreach (var data in @ViewBag.List)
+												{
+													if (data.Name.Contains("Cons"))
+													{
+														<div class="col-12">
+															<div class="form-group">
+																<label class="form-control-label" for="input-address">@data.Name</label>
+																<div class="input-group">
+																	<textarea id="input-address" class="form-control" type="text" name="@data.Name.Replace(" ","")">@data.Value</textarea>
+																</div>
+															</div>
+
+														</div>
+													}
+												}
+											</div>
+											<div class="row mt-3">
+												<div class="col-4">
+													<button type="button" class="btn btn-success" id="addConsTextarea">Add New Cons</button>
+												</div>
+											</div>
+										</div>
+									}
+									else
+									{
+										@foreach (var data in @ViewBag.List)
+										{
+											<div class="col-md-4">
+												<div class="form-group">
+													<label class="form-control-label" for="input-address">@data.Name</label>
+													<div class="input-group">
+														@if (ViewBag.collectionName == "NutritionalInfo")
+														{
+															<input id="input-address" class="form-control" placeholder="Item Name" type="text" name="@data.Name.Replace(" ","")" value="@data.Value" />
+														}
+														else
+														{
+															<input id="input-address" class="form-control" placeholder="Item Name" type="text" name="@data.Name.Replace(" ","")" value="@data.Value | @data.DV" />
+														}
+													</div>
+												</div>
+												<div class="form-group focused">
+												</div>
+											</div>
+										}
+									}
+								</div>
+							</div>
+							<hr class="my-4">
+							<div class="pl-lg-4">
+								<input type="submit" class="btn btn-primary">
+								<a class="btn btn-danger" type="button" href="/Items/Items/ItemsEdit?id=@ViewBag.ItemID">Cancel</a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+    
+}
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<!-- Add this link to include Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<script>
+	$(document).ready(function () {
+		// Handle click event for the "Add New Pros" button
+		$('#addProsTextarea').click(function () {
+			handleAddTextarea('Pros');
+		});
+
+		// Handle click event for the "Add New Cons" button
+		$('#addConsTextarea').click(function () {
+			handleAddTextarea('Cons');
+		});
+
+		function handleAddTextarea(section) {
+			// Get the parent container
+			if (section == 'Pros') {
+				var parentContainer = $('.pros');
+			} else {
+				var parentContainer = $('.cons');
+			}
+
+			// Find all textareas in the container for the specified section
+			var textareas = parentContainer.find('textarea[name*=' + section + ']');
+
+			if (textareas.length > 0) {
+				// Find the last textarea in the container for the specified section
+				var lastTextarea = textareas.last();
+
+				// Clone the last textarea with a new name for the specified section
+				var clonedTextarea = lastTextarea.clone();
+
+				// Extract the index from the cloned textarea's name
+				var currentIndex = parseInt(clonedTextarea.attr('name').match(/\d+/), 10) || 0;
+
+				// Increment the index for the new textarea
+				var newIndex = currentIndex + 1;
+
+				// Update the name of the cloned textarea with the new index for the specified section
+				clonedTextarea.attr('name', section + newIndex);
+
+				// Clear the value of the cloned textarea
+				clonedTextarea.val('');
+
+				// Create a new div with the class 'col-12' to wrap the label, cloned textarea, and delete button
+				var newDiv = $('<div>', {
+					class: 'col-12'
+				});
+
+				// Create a new label for the cloned textarea
+				var newLabel = $('<label>', {
+					class: 'form-control-label d-flex justify-content-between align-items-center',
+					for: 'input-address',
+					text: section + newIndex
+				});
+
+				// Create a new delete button with the "X" icon
+				var deleteButton = $('<button>', {
+					type: 'button',
+					class: 'btn btn-danger btn-sm float-right delete-textarea',
+					html: '<i class="fas fa-times"></i>',
+					click: function () {
+						newDiv.remove(); // Remove the corresponding div when the delete button is clicked
+					}
+				});
+
+				// Append the new label to the div
+				newDiv.append(newLabel);
+
+				// Append the cloned textarea to the div
+				newDiv.append(clonedTextarea);
+
+				// Append the delete button to the div
+				newDiv.append(deleteButton);
+
+				// Append the new div to the parent container
+				parentContainer.append(newDiv);
+			} else {
+				// If no textareas are present, create a new div, label, and textarea
+				var newDiv = $('<div>', {
+					class: 'col-12'
+				});
+
+				var newLabel = $('<label>', {
+					class: 'form-control-label d-flex justify-content-between align-items-center',
+					for: 'input-address',
+					text: section + '1'
+				});
+
+				var newTextarea = $('<textarea>', {
+					class: 'form-control',
+					name: section + '1'
+				});
+
+				// Create a new delete button with the "X" icon
+				var deleteButton = $('<button>', {
+					type: 'button',
+					class: 'btn btn-danger btn-sm float-right delete-textarea',
+					html: '<i class="fas fa-times"></i>',
+					click: function () {
+						newDiv.remove(); // Remove the corresponding div when the delete button is clicked
+					}
+				});
+
+				// Append the new label and textarea to the div
+				newDiv.append(newLabel);
+				newDiv.append(newTextarea);
+
+				// Append the delete button to the div
+				newDiv.append(deleteButton);
+
+				// Append the new div to the parent container
+				parentContainer.append(newDiv);
+			}
+		}
+
+		// Handle click event for delete buttons within the container
+		$(document).on('click', '.delete-textarea', function () {
+			$(this).closest('.col-12').remove(); // Remove the corresponding div when the delete button is clicked
+		});
+	});
+</script>
+
+
+
+
+

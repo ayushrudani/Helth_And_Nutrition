@@ -1,0 +1,268 @@
+﻿<style>
+    .wrapper1 {
+        max-height: 200px;
+        display: flex;
+        overflow-x: auto !important;
+    }
+
+        .wrapper1::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+        }
+
+    .energy-box {
+        width: 120px;
+        padding: 4px;
+    }
+
+    .energy-value {
+        width: 120px;
+        background: #7dd351;
+        margin: 0px 8px;
+        padding: 6px 4px;
+        max-height: 100%;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .energy-lable {
+        width: 120px;
+        background: #858585;
+        margin: 0px 8px;
+        padding: 6px 4px;
+        max-height: 100%;
+        border-radius: 0 0 10px 10px;
+        color: white;
+    }
+
+    .small-text {
+        font-size: x-small;
+    }
+
+    .circle {
+        width: 100px !important;
+        max-height: 100px !important;
+        margin: 0px 6px;
+        display: inline-block;
+        position: relative;
+        text-align: center;
+        line-height: 1;
+    }
+
+        .circle canvas {
+            vertical-align: top;
+            width: 100px !important;
+            margin-bottom: 10px;
+            height:auto !important;
+        }
+
+        .circle .strong {
+            position: absolute;
+            top: 22px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            line-height: 30px;
+            font-size: 18px;
+            color: black;
+        }
+
+        .circle strong i {
+            font-style: normal;
+            font-size: 0.6em;
+            font-weight: normal;
+        }
+
+    .border_insided {
+        border-top: 1.5px solid #7dd351;
+        width: 60%;
+        align-items: center;
+        margin: auto;
+    }
+
+</style>
+<!-- Page Header Start -->
+<div class="container-fluid page-header py-5 mb-5 wow fadeIn"
+     data-wow-delay="0.1s">
+    <div class="container text-center py-5">
+        <h1 class="display-2 text-dark mb-4 animated slideInDown">Acticle</h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+            <ol class="breadcrumb justify-content-center mb-0">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                <li class="breadcrumb-item text-dark" aria-current="page">
+                    Acticle
+                </li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Page Header End -->
+<!-- Article Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5 mb-3">
+            <div class="row">
+                <div class="section-title">
+                    <h1 class="display-6">@Model.ItemName</h1>
+                    <p class="fs-5 fw-medium fst-italic text-primary">
+                        100g
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-5 wow fadeIn" data-wow-delay="0.1s">
+                <img class="img-fluid" src="~/Images/Items/@Model.ImageURL" alt="" />
+            </div>
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+
+                <div class="row">
+                    <p class="fs-5 fw-medium fst-italic text-primary">
+                        Nutritional Info
+                    </p>
+                    <div class="row">
+                        <div class="wrapper1">
+                            @foreach (var data in @ViewBag.NutritionalInfoList)
+                            {
+                                <div class="col-3 ms-2 energy-box">
+                                    <div class="row text-center">
+                                        <div class="col-12 energy-value">
+                                            <p class="mb-0">@data.Value.Split(" ")[0]<span class="small-text">@data.Value.Split(" ")[1]</span></p>
+                                        </div>
+                                        <div class="col-12 energy-lable">
+                                            <p class="mb-0">@data.Name</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                   
+
+                <div class="mb-5"></div>
+                <div class="row">
+                    <p class="fs-5 fw-medium fst-italic text-primary">
+                        Vitamins
+                    </p>
+                    <div class="row">
+                        <div class="wrapper1">
+                            @foreach (var data in @ViewBag.VitaminsList)
+                            {
+                            <div class="progressbar">
+                                    <div class="second circle" data-percent="@data.DV">
+                                    <div class="strong">
+                                        <span>@data.Value</span>
+                                        <p class="border_insided">
+
+
+                                        </p>
+                                        <strong></strong>
+                                    </div>
+                                    <span style="line-height: 5px;">@data.Name</span>
+                                </div>
+                            </div>
+                           } 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <p class="fs-5 fw-medium fst-italic text-primary">
+                        Minrals
+                    </p>
+                    <div class="row">
+                        <div class="wrapper1">
+                            @foreach (var data in @ViewBag.MineralsList)
+                            {
+                                <div class="progressbar">
+                                    <div class="second circle" data-percent="@data.DV">
+                                        <div class="strong">
+                                            <span>@data.Value</span>
+                                            <p class="border_insided">
+
+
+                                            </p>
+                                            <strong></strong>
+                                        </div>
+                                        <span style="line-height: 5px;">@data.Name</span>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <a href="" class="btn btn-primary rounded-pill py-3 px-5">Read More</a> -->
+            </div>
+        </div>
+        <div class="row">
+            <p class="fs-5 fw-medium fst-italic text-primary">
+                Pros:
+            </p>
+            @foreach (var data in ViewBag.ProsConsList)
+            {
+                if (data.Name.Contains("Pros"))
+                {
+                    <div class="row mb-3">
+                        <div class="col-1 text-md-end">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="col-11">
+                            @data.Value
+                        </div>
+                    </div>
+                }
+            }
+            <p class="fs-5 fw-medium fst-italic text-primary">
+                Cons:
+            </p>
+            @foreach (var data in ViewBag.ProsConsList)
+            {
+                if (data.Name.Contains("Cons"))
+                {
+                    <div class="row mb-3">
+                        <div class="col-1 text-md-end">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="col-11">
+                            @data.Value
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+<!-- Article End -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://rawgit.com/kottenator/jquery-circle-progress/1.2.2/dist/circle-progress.js"></script>
+
+<script>
+    $(document).ready(function ($) {
+        function animateElements() {
+            $('.progressbar').each(function () {
+                var elementPos = $(this).offset().top;
+                var topOfWindow = $(window).scrollTop();
+                var percent = $(this).find('.circle').attr('data-percent');
+                var animate = $(this).data('animate');
+                if (elementPos < topOfWindow + $(window).height() - 30 && !animate) {
+                    $(this).data('animate', true);
+                    $(this).find('.circle').circleProgress({
+                        startAngle: -Math.PI / 2,
+                        value: percent / 100,
+                        size: 400,
+                        thickness: 35,
+                        fill: {
+                            color: '#7dd351'
+                        }
+                    }).on('circle-animation-progress', function (event, progress, stepValue) {
+                        $(this).find('strong').text((stepValue * 100).toFixed(0) + "%");
+                    }).stop();
+                }
+            });
+        }
+
+        animateElements();
+        $(window).scroll(animateElements);
+    });
+</script>
+<!-- Template Javascript -->
